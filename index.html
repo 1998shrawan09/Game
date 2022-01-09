@@ -36,7 +36,6 @@
             align-items: center;
             grid-template-columns: repeat(3, auto)
             }
-
             .cell {
             width: var(--cell-size);
             height: var(--cell-size);
@@ -47,44 +46,36 @@
             position: relative;
             cursor: pointer;
             }
-
             .cell:first-child,
             .cell:nth-child(2),
             .cell:nth-child(3) {
             border-top: none;
             }
-
             .cell:nth-child(3n + 1) {
             border-left: none;
             }
-
             .cell:nth-child(3n + 3) {
             border-right: none;
             }
-
             .cell:last-child,
             .cell:nth-child(8),
             .cell:nth-child(7) {
             border-bottom: none;
             }
-
             .cell.x,
             .cell.circle {
             cursor: not-allowed;
             }
-
             .cell.x::before,
             .cell.x::after,
             .cell.circle::before {
             background-color: black;
             }
-
             .board.x .cell:not(.x):not(.circle):hover::before,
             .board.x .cell:not(.x):not(.circle):hover::after,
             .board.circle .cell:not(.x):not(.circle):hover::before {
             background-color: lightgrey;
             }
-
             .cell.x::before,
             .cell.x::after,
             .board.x .cell:not(.x):not(.circle):hover::before,
@@ -94,17 +85,14 @@
             width: calc(var(--mark-size) * .15);
             height: var(--mark-size);
             }
-
             .cell.x::before,
             .board.x .cell:not(.x):not(.circle):hover::before {
             transform: rotate(45deg);
             }
-
             .cell.x::after,
             .board.x .cell:not(.x):not(.circle):hover::after {
             transform: rotate(-45deg);
             }
-
             .cell.circle::before,
             .cell.circle::after,
             .board.circle .cell:not(.x):not(.circle):hover::before,
@@ -113,7 +101,6 @@
             position: absolute;
             border-radius: 50%;
             }
-
             .cell.circle::before,
             .board.circle .cell:not(.x):not(.circle):hover::before {
             width: var(--mark-size);
@@ -126,7 +113,6 @@
             height: calc(var(--mark-size) * .7);
             background-color: white;
             }
-
             .winning-message {
             display: none;
             position: fixed;
@@ -141,7 +127,6 @@
             font-size: 5rem;
             flex-direction: column;
             }
-
             .winning-message button {
             font-size: 3rem;
             background-color: white;
@@ -149,13 +134,11 @@
             padding: .25em .5em;
             cursor: pointer;
             }
-
             .winning-message button:hover {
             background-color: black;
             color: white;
             border-color: white;
             }
-
             .winning-message.show {
             display: flex;
             }
@@ -211,7 +194,6 @@
         setBoardHoverClass()
         winningMessageElement.classList.remove('show')
         }
-
         function handleClick(e) {
         const cell = e.target
         const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS
@@ -225,7 +207,6 @@
             setBoardHoverClass()
         }
         }
-
         function endGame(draw) {
         if (draw) {
             winningMessageTextElement.innerText = 'Draw!'
@@ -234,21 +215,17 @@
         }
         winningMessageElement.classList.add('show')
         }
-
         function isDraw() {
         return [...cellElements].every(cell => {
             return cell.classList.contains(X_CLASS) || cell.classList.contains(CIRCLE_CLASS)
         })
         }
-
         function placeMark(cell, currentClass) {
         cell.classList.add(currentClass)
         }
-
         function swapTurns() {
         circleTurn = !circleTurn
         }
-
         function setBoardHoverClass() {
         board.classList.remove(X_CLASS)
         board.classList.remove(CIRCLE_CLASS)
@@ -258,7 +235,6 @@
             board.classList.add(X_CLASS)
         }
         }
-
         function checkWin(currentClass) {
         return WINNING_COMBINATIONS.some(combination => {
             return combination.every(index => {
